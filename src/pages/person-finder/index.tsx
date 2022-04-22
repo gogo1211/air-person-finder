@@ -1,11 +1,10 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 
 import { SearchInput } from 'components/SearchInput';
+import { PersonList } from 'components/PersonList';
 
 const PersonFinder: FC = () => {
-  const handleSearch = (value: string) => {
-    console.log(value);
-  };
+  const [query, setQuery] = useState('');
 
   return (
     <div className="mt-6 w-[36rem] m-auto">
@@ -14,7 +13,10 @@ const PersonFinder: FC = () => {
         If you just can’t find someone and need to know what they look like, you’ve come to the right place! Just type
         the name of the person you are looking for below into the search box!
       </p>
-      <SearchInput className="mt-8" placeholder="Search in Air HQ" fullWidth onChange={handleSearch} />
+      <SearchInput className="mt-8" placeholder="Search in Air HQ" fullWidth onChange={setQuery} />
+      <div className="mt-12">
+        <PersonList query={query} />
+      </div>
     </div>
   );
 };
