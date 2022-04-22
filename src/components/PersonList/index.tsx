@@ -18,6 +18,7 @@ export const PersonList: FC<PersonListProps> = ({ query }) => {
 
   useEffect(() => {
     setItems([]);
+    totalPage.current = 0;
     handleLoad(0);
     ref.current?.scroll(0, 0);
   }, [query]);
