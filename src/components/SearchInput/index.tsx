@@ -1,9 +1,41 @@
-import { forwardRef, InputHTMLAttributes } from 'react';
+import { ChangeEvent, forwardRef, InputHTMLAttributes, ReactNode, useMemo } from 'react';
+import classnames from 'classnames';
+import { debounce } from 'lodash';
 
-interface SearchInputProps extends InputHTMLAttributes<HTMLInputElement> {
+import { MagnifierIcon } from 'components/Icons';
+
+interface SearchInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
   fullWidth?: boolean;
+  delay?: number;
+  icon?: ReactNode;
+  onChange?: (value: string) => void;
 }
 
-export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>((props, ref) => {
-  return <input ref={ref} className="" {...props} />;
-});
+export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
+  ({ className, fullWidth, delay = 500, icon, onChange, ...rest }, ref) => {
+    // debounce change for performance
+    const handleChange = debounce((e: ChangeEvent<HTMLInputElement>) => {
+      onChange?.(e.target.value);
+    }, delay);
+
+    // MagnifierIcon by default
+    const startAdornment = useMemo(() => icon || <MagnifierIcon />, [icon]);
+
+    return (
+      <div
+        className={classnames(className, 'relative px-4 items-center bg-gray3', {
+          'w-full flex': fullWidth,
+          'inline-flex': !fullWidth
+        })}
+      >
+        <div className="h-px flex items-center">{startAdornment}</div>
+        <input
+          ref={ref}
+          className="w-full pl-1 py-2 text-sm border-none outline-none appearance-none bg-transparent"
+          onChange={handleChange}
+          {...rest}
+        />
+      </div>
+    );
+  }
+);
