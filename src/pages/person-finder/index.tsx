@@ -7,7 +7,7 @@ const PersonFinder: FC = () => {
   const [query, setQuery] = useState('');
 
   return (
-    <div className="mt-6 w-[36rem] m-auto">
+    <div className="py-6 w-[36rem] m-auto">
       <h1 className="text-primary text-header">The Person Finder</h1>
       <p className="mt-[3.75rem] text-gray1 text-base">
         If you just can’t find someone and need to know what they look like, you’ve come to the right place! Just type
