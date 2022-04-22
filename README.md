@@ -2,7 +2,6 @@
 
 ### Libraries
 
-- [Jest](https://jestjs.io/)
 - [React](https://reactjs.org/)
 - [tailwindcss](https://tailwindcss.com/)
   - [tailwindcss forms plugin](https://tailwindcss-forms.vercel.app/)
