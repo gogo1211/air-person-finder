@@ -29,12 +29,14 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
         })}
       >
         <div className="h-px flex items-center">{startAdornment}</div>
-        <input
-          ref={ref}
-          className="w-full pl-1 py-2 text-sm border-none outline-none appearance-none bg-transparent"
-          onChange={handleChange}
-          {...rest}
-        />
+        <label className="flex-1">
+          <input
+            ref={ref}
+            className="w-full pl-1 py-2.5 text-sm border-none outline-none bg-transparent"
+            onChange={handleChange}
+            {...rest}
+          />
+        </label>
       </div>
     );
   }

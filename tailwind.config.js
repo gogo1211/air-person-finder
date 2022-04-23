@@ -8,6 +8,10 @@ module.exports = {
         gray2: '#666666',
         gray3: '#efefef'
       },
+      fontFamily: {
+        georgia: 'Georgia',
+        helvetica: 'Helvetica'
+      },
       fontSize: {
         header: ['2.5rem', '2.75rem'] // 40px 44px
       }
